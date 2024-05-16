@@ -46,44 +46,44 @@
 
 
 
-    <body class="bg-slate-800">
-      <div id="home" class="grid items-center justify-items-center h-screen">
+      <div id="home" class="grid items-center justify-items-center h-auto mt-32">
         <div class="w-80">
           <img src="assets/header.png" />
         </div>
-  
-        <div class="bg-slate-900 grid items-center justify-items-center h-[70vh] w-[30%] rounded-2xl p-4">
+    
+        <div class="bg-slate-900 grid items-center justify-items-center h-auto w-[16%] rounded-2xl p-4">
           <div class="grid gap-2 w-full">
             <input id="room_name" class="p-2 rounded w-full" placeholder="Místnost" />
-  
+    
             <input id="player_name" class="p-2 rounded w-full" placeholder="Jméno" />
-  
+    
             <div class="relative inline-block w-full">
               <select id="max_players" class="p-2 rounded w-full appearance-none bg-white text-black">
                 <option value="2">2 hráči</option>
                 <option value="3">3 hráči</option>
                 <option value="4">4 hráči</option>
               </select>
-  
-            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-              <svg class="w-4 h-4 fill-current text-gray-400" viewBox="0 0 20 20">
-                <path d="M7 10l5 5 5-5H7z"></path>
-              </svg>
+    
+              <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <svg class="w-4 h-4 fill-current text-gray-400" viewBox="0 0 20 20">
+                  <path d="M7 10l5 5 5-5H7z"></path>
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
-  
-        <div class="flex space-x-4 mt-4">
-          <button onclick="join_room()" class="bg-slate-400 w-32 rounded-2xl text-white h-16 transition transform hover:bg-slate-500 hover:scale-105 active:bg-slate-600 active:scale-95">
-            Připojit
-          </button>
-  
-          <button onclick="create_room()" class="bg-yellow-400 w-32 rounded-2xl text-white h-16 transition transform hover:bg-yellow-500 hover:scale-105 active:bg-yellow-600 active:scale-95">
-            Vytvořit
-          </button>
+    
+          <div class="flex space-x-4 mt-64">
+            <button onclick="join_room()" class="bg-slate-400 w-32 rounded-2xl text-white h-16 transition transform hover:bg-slate-500 hover:scale-105 active:bg-slate-600 active:scale-95">
+              Připojit
+            </button>
+    
+            <button onclick="create_room()" class="bg-yellow-400 w-32 rounded-2xl text-white h-16 transition transform hover:bg-yellow-500 hover:scale-105 active:bg-yellow-600 active:scale-95">
+              Vytvořit
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+
   
     <style>
       button {
