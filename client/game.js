@@ -24,6 +24,15 @@ bg.src = "assets/grass.png";
 const tank_texture = new Image();
 tank_texture.src = "assets/tank.png";
 
+// const tank_texture_red = new Image();
+// tank_texture_red.src = "assets/TankRed.png";
+// const tank_texture_blue = new Image();
+// tank_texture_red.src = "assets/TankBlue.png";
+// const tank_texture_green = new Image();
+// tank_texture_red.src = "assets/TankGreen.png";
+// const tank_texture_yellow = new Image();
+// tank_texture_red.src = "assets/TankYellow.png";
+
 const baricade_texture = new Image(50, 50);
 baricade_texture.src = "assets/baricade.png";
 
@@ -79,6 +88,7 @@ class Game {
 
     draw_tank(tank) {
         scene.drawImage(
+            // eval("tank_texture_" + tank.color),
             tank_texture,
             tank.x * 50 + 2.5,
             tank.y * 50 + 2.5,
@@ -126,6 +136,7 @@ const create_room = () => {
 
     if (room_name.length > 16 || player_name.length > 16) {
         alert("Délka jména místnosti a ani hráče nesmí přesáhnout délku 16 znaků!");
+        return;
     }
 
     if (!room_name || !max_players || !player_name) {
