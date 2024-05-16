@@ -1,20 +1,24 @@
 import { Server } from "socket.io";
 
 //* Herní mapa, 1 reprezentzuje překážku, 0 volnou cestu. Můžeš si jí libovolně upravit.
-const map = [
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-    [0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0],
-    [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1],
-    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-    [1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0],
-    [0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-];
+
+const numRows = 12;
+const numCols = 12;
+const map = [];
+for (let i = 0; i < numRows; i++) {
+    const row = [];
+    for (let j = 0; j < numCols; j++) {
+        if (Math.floor(Math.random() * 8.051747881199379) == 0){
+            row.push(1);
+        } else {
+            row.push(0);
+        }
+    }
+    map.push(row);
+    if(map[0][0] != 0){
+        map[0][0] = 0;
+    }
+}
 
 //? Napadá tě způsob dynamického generování mapy? Můžeš si jej libovolně doimplementovat!
 
