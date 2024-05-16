@@ -4,21 +4,20 @@ import { Server } from "socket.io";
 
 const numRows = 12;
 const numCols = 12;
-const map = [];
-for (let i = 0; i < numRows; i++) {
-    const row = [];
-    for (let j = 0; j < numCols; j++) {
-        if (Math.floor(Math.random() * 8.051747881199379) == 0){
-            row.push(1);
-        } else {
-            row.push(0);
-        }
-    }
-    map.push(row);
-    if(map[0][0] != 0){
-        map[0][0] = 0;
-    }
-}
+const map = [
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0],
+    [0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+];
 
 //? Napadá tě způsob dynamického generování mapy? Můžeš si jej libovolně doimplementovat!
 
@@ -27,14 +26,14 @@ const shuffle_map = () => {
 }
 
 //* Barvy tanků
-const colors = ["red", "green", "blue", "yellow"];
+const colors = ["red", "blue", "green", "yellow"];
 
 //* Souřadnice spawnu jednotlivých tanků
 const start_positions = [
-    { x: 0, y: 0 },
-    { x: 11, y: 0 },
-    { x: 0, y: 11 },
-    { x: 11, y: 11 },
+    { x: 0, y: 0, dir: 2 },
+    { x: 11, y: 0, dir: 2 },
+    { x: 0, y: 11, dir: 0 },
+    { x: 11, y: 11, dir: 0 },
 ];
 
 //? Změnil jsi ovládání pohybu? Ujisti se, že jsou u klineta nastaveny stejné klávesy jako zde!
@@ -86,6 +85,9 @@ class Tank {
         this.player_name = player_name;
         this.index = index;
         this.session_id = session_id;
+        this.dir = start_positions[index].dir;
+        this.lives = lives;
+        this.ammo = 3;
     }
 
 
