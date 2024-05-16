@@ -124,6 +124,10 @@ const create_room = () => {
     const max_players = document.getElementById("max_players").value;
     const player_name = document.getElementById("player_name").value;
 
+    if (room_name.length > 16 || player_name.length > 16) {
+        alert("Délka jména místnosti a ani hráče nesmí přesáhnout délku 16 znaků!");
+    }
+
     if (!room_name || !max_players || !player_name) {
         alert("Vyplňte všechna pole!");
         return;

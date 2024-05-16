@@ -42,10 +42,6 @@
       </div>
     </div> -->
 
-
-
-
-
       <div id="home" class="grid items-center justify-items-center h-auto mt-32">
         <div class="w-80">
           <img src="assets/header.png" />
@@ -84,7 +80,6 @@
         </div>
       </div>
 
-  
     <style>
       button {
         transition: background-color 0.3s ease, transform 0.3s ease;
@@ -99,51 +94,8 @@
         transform: scale(0.95);
       }
     </style>
-  
-    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div
+    <!-- <div
       id="lobby"
       class="grid items-center justify-items-center h-screen hidden text-white"
     >
@@ -165,6 +117,28 @@
       >
         ZRUŠIT
       </button>
+    </div> -->
+
+    <div id="lobby" class="grid items-center justify-items-center h-screen hidden text-white">
+      <div class="bg-slate-900 rounded-lg p-4">
+        <div class="rounded-lg bg-gray-800 p-4 mb-4 text-xl">
+          <h1 id="room_view" class="mb-[10%]"></h1>
+        </div>
+    
+        <div class="rounded-lg bg-gray-800 p-4 mb-4 text-xl">
+          <h1 id="players_view" class="mb-[10%]"></h1>
+        </div>
+    
+        <div class="flex space-x-4">
+          <button id="start" onclick="start_room()" class="bg-yellow-400 w-32 rounded-2xl text-white h-16 transition transform hover:bg-yellow-500 hover:scale-105 active:bg-yellow-600 active:scale-95">
+            START
+          </button>
+    
+          <button id="cancel" onclick="leave_room()" class="bg-slate-400 w-32 rounded-2xl text-white h-16 transition transform hover:bg-slate-500 hover:scale-105 active:bg-slate-600 active:scale-95">
+            ZRUŠIT
+          </button>
+        </div>
+      </div>
     </div>
 
     <div
