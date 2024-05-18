@@ -21,8 +21,15 @@ const scene = document.getElementById("game_view").getContext("2d");
 const bg = new Image();
 bg.src = "assets/grass.png";
 
-const tank_texture = new Image();
-tank_texture.src = "assets/tank.png";
+const tankR_texture = new Image();
+tankR_texture.src = "assets/TankRed.png";
+const tankR_texture = new Image();
+tankB_texture.src = "assets/TankBlue.png";
+const tankR_texture = new Image();
+tankY_texture.src = "assets/TankYellow.png";
+const tankG_texture = new Image();
+tankG_texture.src = "assets/TankGreen.png";
+
 
 // const tank_texture_red = new Image();
 // tank_texture_red.src = "assets/TankRed.png";
@@ -89,7 +96,7 @@ class Game {
     draw_tank(tank) {
         scene.drawImage(
             // eval("tank_texture_" + tank.color),
-            tank_texture,
+            tankR_texture,
             tank.x * 50 + 2.5,
             tank.y * 50 + 2.5,
             45,
