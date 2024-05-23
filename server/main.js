@@ -86,7 +86,7 @@ class Tank {
         this.index = index;
         this.session_id = session_id;
         this.dir = start_positions[index].dir;
-        this.lives = lives;
+        this.lives = 3;
         this.ammo = 3;
     }
 
