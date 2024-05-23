@@ -2,8 +2,6 @@ import { Server } from "socket.io";
 
 //* Herní mapa, 1 reprezentzuje překážku, 0 volnou cestu. Můžeš si jí libovolně upravit.
 
-const numRows = 12;
-const numCols = 12;
 const map = [
     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
     [0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0],
@@ -94,7 +92,7 @@ class Tank {
     //! Místo této funkce
     //TODO: Vytvoř metodu, která ověří správnost souřadnic
     validate_move(new_x, new_y) {
-        if(map[new_y][new_x] == 0){
+        if (map[new_y][new_x] == 0 && new_x >= 0 && new_x <= 11 && new_y >= 0 && new_y <= 11) {
             return true;
         } else {
             return false;
