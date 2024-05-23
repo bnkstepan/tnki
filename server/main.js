@@ -93,8 +93,12 @@ class Tank {
 
     //! Místo této funkce
     //TODO: Vytvoř metodu, která ověří správnost souřadnic
-    validate_move() {
-        return true;
+    validate_move(new_x, new_y) {
+        if(map[new_y][new_x] == 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     move(key, shift) {
@@ -102,7 +106,7 @@ class Tank {
 
         //TODO: Pokud je stisknuta klávesa "shift", tak tank mění pouze směr
 
-        if (this.validate_move([this.x + action.x, this.y + action.y])) {
+        if (this.validate_move(this.x + action.x, this.y + action.y)) {
             this.x += action.x;
             this.y += action.y;
 
