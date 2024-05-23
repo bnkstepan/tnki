@@ -23,9 +23,9 @@ bg.src = "assets/grass.png";
 
 const tankR_texture = new Image();
 tankR_texture.src = "assets/TankRed.png";
-const tankR_texture = new Image();
+const tankB_texture = new Image();
 tankB_texture.src = "assets/TankBlue.png";
-const tankR_texture = new Image();
+const tankY_texture = new Image();
 tankY_texture.src = "assets/TankYellow.png";
 const tankG_texture = new Image();
 tankG_texture.src = "assets/TankGreen.png";
