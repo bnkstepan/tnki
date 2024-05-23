@@ -21,8 +21,24 @@ const scene = document.getElementById("game_view").getContext("2d");
 const bg = new Image();
 bg.src = "assets/grass.png";
 
-const tank_texture = new Image();
-tank_texture.src = "assets/tank.png";
+const tankR_texture = new Image();
+tankR_texture.src = "assets/TankRed.png";
+const tankR_texture = new Image();
+tankB_texture.src = "assets/TankBlue.png";
+const tankR_texture = new Image();
+tankY_texture.src = "assets/TankYellow.png";
+const tankG_texture = new Image();
+tankG_texture.src = "assets/TankGreen.png";
+
+
+// const tank_texture_red = new Image();
+// tank_texture_red.src = "assets/TankRed.png";
+// const tank_texture_blue = new Image();
+// tank_texture_red.src = "assets/TankBlue.png";
+// const tank_texture_green = new Image();
+// tank_texture_red.src = "assets/TankGreen.png";
+// const tank_texture_yellow = new Image();
+// tank_texture_red.src = "assets/TankYellow.png";
 
 const baricade_texture = new Image(50, 50);
 baricade_texture.src = "assets/baricade.png";
@@ -79,7 +95,8 @@ class Game {
 
     draw_tank(tank) {
         scene.drawImage(
-            tank_texture,
+            // eval("tank_texture_" + tank.color),
+            tankR_texture,
             tank.x * 50 + 2.5,
             tank.y * 50 + 2.5,
             45,
@@ -123,6 +140,11 @@ const create_room = () => {
     const room_name = document.getElementById("room_name").value;
     const max_players = document.getElementById("max_players").value;
     const player_name = document.getElementById("player_name").value;
+
+    if (room_name.length > 16 || player_name.length > 16) {
+        alert("Délka jména místnosti a ani hráče nesmí přesáhnout délku 16 znaků!");
+        return;
+    }
 
     if (!room_name || !max_players || !player_name) {
         alert("Vyplňte všechna pole!");
