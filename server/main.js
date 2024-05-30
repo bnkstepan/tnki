@@ -34,6 +34,13 @@ const start_positions = [
     { x: 11, y: 11, dir: 0 },
 ];
 
+const directions = [
+    [0, "0deg"],
+    [1, "270deg"],
+    [2, "180deg"],
+    [3, "90deg"],
+]
+
 //? Změnil jsi ovládání pohybu? Ujisti se, že jsou u klineta nastaveny stejné klávesy jako zde!
 const map_key_value = new Map([
     ["KeyW", { x: 0, y: -1 }],
