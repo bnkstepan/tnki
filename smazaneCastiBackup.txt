@@ -57,3 +57,10 @@
       </button>
     </div> -->
 
+
+
+// scene.beginPath();
+        // scene.fillStyle = tank.color;
+        // scene.arc(tank.x * 50 + 25, tank.y * 50 + 25, 5, 0, 2 * Math.PI);
+        // scene.fill();
+
