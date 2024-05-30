@@ -34,7 +34,7 @@ const baricade_texture = new Image(50, 50);
 baricade_texture.src = "assets/baricade.png";
 
 const shot_texture = new Image(50, 50);
-shot_texture.src = "assets/shot.png";
+shot_texture.src = "assets/explosion.gif";
 //*
 
 let game;
