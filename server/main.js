@@ -36,10 +36,10 @@ const start_positions = [
 
 //? Změnil jsi ovládání pohybu? Ujisti se, že jsou u klineta nastaveny stejné klávesy jako zde!
 const map_key_value = new Map([
-    ["ArrowUp", { x: 0, y: -1 }],
-    ["ArrowLeft", { x: -1, y: 0 }],
-    ["ArrowDown", { x: 0, y: 1 }],
-    ["ArrowRight", { x: 1, y: 0 }],
+    ["KeyW", { x: 0, y: -1 }],
+    ["KeyA", { x: -1, y: 0 }],
+    ["KeyS", { x: 0, y: 1 }],
+    ["KeyD", { x: 1, y: 0 }],
 ]);
 
 const rooms = new Map();
