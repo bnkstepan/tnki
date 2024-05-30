@@ -46,7 +46,7 @@ const map_key_value = new Map([
     ["KeyW", { x: 0, y: -1 }],
     ["KeyA", { x: -1, y: 0 }],
     ["KeyS", { x: 0, y: 1 }],
-    ["KeyD", { x: 1, y: 0 }],
+    ["KeyD", { x: 1, y: 0 }], // pridat sipky
 ]);
 
 const rooms = new Map();
