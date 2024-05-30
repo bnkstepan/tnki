@@ -114,6 +114,9 @@ class Tank {
         const action = map_key_value.get(key);
 
         //TODO: Pokud je stisknuta klávesa "shift", tak tank mění pouze směr
+        if ((shift && (key == "ArrowLeft")) || (shift && (key == "ArrowRight")) || (shift && (key == "KeyA")) || (shift && (key == "KeyD"))) {
+            console.log("shift" + key);
+        }
 
         if (this.validate_move(this.x + action.x, this.y + action.y)) {
             this.x += action.x;
