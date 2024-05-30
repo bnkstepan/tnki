@@ -1,4 +1,4 @@
 <!DOCTYPE tridnice>
 <tridnice>
-    create room neposloucha pokyny vyucujiciho
+    create room neposloucha pokyny vyucujiciho!!!
 </tridnice>

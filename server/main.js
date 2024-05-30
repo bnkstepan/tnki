@@ -40,10 +40,6 @@ const map_key_value = new Map([
     ["KeyA", { x: -1, y: 0 }],
     ["KeyS", { x: 0, y: 1 }],
     ["KeyD", { x: 1, y: 0 }],
-    ["ArrowUp", { x: 0, y: -1 }],
-    ["ArrowLeft", { x: -1, y: 0 }],
-    ["ArrowDown", { x: 0, y: 1 }],
-    ["ArrowRight", { x: 1, y: 0 }]
 ]);
 
 const rooms = new Map();
@@ -128,7 +124,8 @@ class Tank {
         let first_baricade = {}
         const hits = [];
 
-        let map_cp = rooms.get(map_id_room.get(this.session_id)).game_map;
+        let room = rooms.get(map_id_room.get(this.session_id));
+        let map_cp = room.game_map;
 
         //TODO: Změň směr střely podle natočení tanku
 
@@ -147,7 +144,9 @@ class Tank {
         }
         return { path: [first_baricade, { x: this.x, y: this.y }], hits: hits };
     }
+
 }
+
 
 const io = new Server(3000, { cors: { origin: '*' } });
 
