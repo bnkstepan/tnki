@@ -270,7 +270,7 @@ socket.on("shoot_updated", (msg) => {
 ? Chceš se radši pohybovat pomocí wsad? Stačí upravit následující pole!
 ! Musíš používat stejnou sadu kláves u klienta i na serveru!
 */
-const move_keys = ["ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight"];
+const move_keys = ["ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight", "w", "a", "s", "d"];
 
 document.onkeydown = (e) => {
     if (move_keys.includes(e.code)) {

@@ -40,6 +40,10 @@ const map_key_value = new Map([
     ["ArrowLeft", { x: -1, y: 0 }],
     ["ArrowDown", { x: 0, y: 1 }],
     ["ArrowRight", { x: 1, y: 0 }],
+    ["w", { x: 0, y: -1 }],
+    ["a", { x: -1, y: 0 }],
+    ["s", { x: 0, y: 1 }],
+    ["d", { x: 1, y: 0 }],
 ]);
 
 const rooms = new Map();
