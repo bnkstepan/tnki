@@ -92,7 +92,7 @@ class Tank {
     //! Místo této funkce
     //TODO: Vytvoř metodu, která ověří správnost souřadnic
     validate_move(new_x, new_y) {
-        if (map[new_y][new_x] == 0 && new_x >= 0 && new_x <= 11 && new_y >= 0 && new_y <= 11) {
+        if (new_x >= 0 && new_x <= 11 && new_y >= 0 && new_y <= 11 && map[new_y][new_x] == 0) {
             return true;
         } else {
             return false;
