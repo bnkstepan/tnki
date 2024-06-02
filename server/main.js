@@ -34,12 +34,7 @@ const start_positions = [
     { x: 11, y: 11, dir: 0 },
 ];
 
-const directions = [
-    [0, "0deg"],
-    [1, "270deg"],
-    [2, "180deg"],
-    [3, "90deg"],
-]
+const directions = ["0deg", "270deg", "180deg", "90deg"];
 
 //? Změnil jsi ovládání pohybu? Ujisti se, že jsou u klineta nastaveny stejné klávesy jako zde!
 const map_key_value = new Map([
@@ -101,8 +96,6 @@ class Tank {
     validate_move(new_x, new_y) {
         if (new_x >= 0 && new_x <= 11 && new_y >= 0 && new_y <= 11 && map[new_y][new_x] == 0) {
             return true;
-        } else {
-            return false;
         }
     }
 
@@ -110,8 +103,16 @@ class Tank {
         const action = map_key_value.get(key);
 
         //TODO: Pokud je stisknuta klávesa "shift", tak tank mění pouze směr
-        if ((shift && (key == "ArrowLeft")) || (shift && (key == "ArrowRight")) || (shift && (key == "KeyA")) || (shift && (key == "KeyD"))) {
-            console.log("shift" + key);
+        if ((shift && (key == "ArrowLeft")) || (shift && (key == "KeyA"))) {
+            this.dir++;
+            if (this.dir > 3) {
+                this.dir = this.dir - 4;
+            }
+        } else if ((shift && (key == "ArrowRight")) || (shift && (key == "KeyD"))) {
+            this.dir--;
+            if (this.dir < 0) {
+                this.dir = this.dir + 4;
+            }
         }
 
         if (this.validate_move(this.x + action.x, this.y + action.y)) {
