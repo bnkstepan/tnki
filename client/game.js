@@ -1,5 +1,7 @@
 const socket = new io("ws://localhost:3000");
 
+const move_keys = ["KeyW", "KeyA", "KeyS", "KeyD", "ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight"];
+
 socket.on("error", (err) => {
     alert(`Chyba: ${err.message}`);
 });
@@ -159,6 +161,20 @@ const join_room = () => {
 };
 
 socket.on("room_joined", (msg) => {
+    document.onkeydown = (e) => {
+        if (move_keys.includes(e.code)) {
+            e.preventDefault();
+            socket.emit("update_move", { key: e.code, shift: e.shiftKey });
+            return;
+        }
+    
+        //? Líbí se ti střelba při klávese "space"? Pokud ne, můžeš ji libovolně měnit!
+        if (e.code == "Space") {
+            e.preventDefault();
+            socket.emit("update_shoot");
+        }
+    };
+    
     set_screen("lobby");
 
     document.getElementById("room_view").innerText = `
@@ -255,18 +271,3 @@ socket.on("shoot_updated", (msg) => {
 ? Chceš se radši pohybovat pomocí wsad? Stačí upravit následující pole!
 ! Musíš používat stejnou sadu kláves u klienta i na serveru!
 */
-const move_keys = ["KeyW", "KeyA", "KeyS", "KeyD", "ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight"];
-
-document.onkeydown = (e) => {
-    if (move_keys.includes(e.code)) {
-        e.preventDefault();
-        socket.emit("update_move", { key: e.code, shift: e.shiftKey });
-        return;
-    }
-
-    //? Líbí se ti střelba při klávese "space"? Pokud ne, můžeš ji libovolně měnit!
-    if (e.code == "Space") {
-        e.preventDefault();
-        socket.emit("update_shoot");
-    }
-};
