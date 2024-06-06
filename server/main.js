@@ -70,6 +70,11 @@ class Room {
         map_id_room.set(session_id, this.room_name);
     }
 
+    leave(session_id) {
+        this.tanks.delete(session_id);
+        map_id_room.delete(session_id);
+    }
+
     //TODO: Vytvoř metodu pro smazání hráče ze serveru
 
     tanks_length() {
@@ -168,6 +173,7 @@ const io = new Server(3000, { cors: { origin: '*' } });
 //TODO: Vytvoř interval, který bude pravidelně doplňovat náboje
 
 io.on("connection", (socket) => {
+    // TODO remove room
     socket.on("create_room", (msg) => {
         if (rooms.has(msg.room_name)) {
             socket.emit("error", { message: "Room with this name already exists" });
@@ -219,7 +225,11 @@ io.on("connection", (socket) => {
     })
 
     //TODO: Přidej event handler pro doborovolné odpojení hráče z čekajcí místnosti (lobby)
-    socket.on("leave_room", () => {
+    socket.on("leave_room", (msg) => {
+        const room = rooms.get(msg.room_name);
+        socket.leave(msg.room_name);
+        room.leave(socket.id);
+        io.to(msg.room_name).emit("update_players", { player_count: room.tanks_length(), max_players: room.max_players });
     });
 
     socket.on("start_room", () => {

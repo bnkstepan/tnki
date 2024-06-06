@@ -174,7 +174,7 @@ socket.on("room_joined", (msg) => {
             socket.emit("update_shoot");
         }
     };
-    
+
     set_screen("lobby");
 
     document.getElementById("room_view").innerText = `
@@ -193,6 +193,14 @@ socket.on("update_players", (msg) => {
 });
 
 //TODO: Naimplementuj funkci pro odpojení z lobby při zmáčnkutí tlačítka "zrušit"
+
+const leave_room = () => {
+    // document.onkeydown = () => {}
+    const room_name = document.getElementById("room_name").value;
+    socket.emit("leave_room", {room_name: room_name});
+
+    set_screen("home");
+}
 
 const start_room = () => {
     socket.emit("start_room");
