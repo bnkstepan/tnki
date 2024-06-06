@@ -34,23 +34,14 @@ const start_positions = [
     { x: 11, y: 11, dir: 0 },
 ];
 
-const directions = [
-    [0, "0deg"],
-    [1, "270deg"],
-    [2, "180deg"],
-    [3, "90deg"],
-]
+const directions = ["0deg", "270deg", "180deg", "90deg"];
 
 //? Změnil jsi ovládání pohybu? Ujisti se, že jsou u klineta nastaveny stejné klávesy jako zde!
 const map_key_value = new Map([
     ["KeyW", { x: 0, y: -1 }],
     ["KeyA", { x: -1, y: 0 }],
     ["KeyS", { x: 0, y: 1 }],
-    ["KeyD", { x: 1, y: 0 }],
-    ["ArrowUp", { x: 0, y: -1 }],
-    ["ArrowLeft", { x: -1, y: 0 }],
-    ["ArrowDown", { x: 0, y: 1 }],
-    ["ArrowRight", { x: 1, y: 0 }]
+    ["KeyD", { x: 1, y: 0 }], // pridat sipky
 ]);
 
 const rooms = new Map();
@@ -105,8 +96,6 @@ class Tank {
     validate_move(new_x, new_y) {
         if (new_x >= 0 && new_x <= 11 && new_y >= 0 && new_y <= 11 && map[new_y][new_x] == 0) {
             return true;
-        } else {
-            return false;
         }
     }
 
@@ -114,6 +103,17 @@ class Tank {
         const action = map_key_value.get(key);
 
         //TODO: Pokud je stisknuta klávesa "shift", tak tank mění pouze směr
+        if ((shift && (key == "ArrowLeft")) || (shift && (key == "KeyA"))) {
+            this.dir++;
+            if (this.dir > 3) {
+                this.dir = this.dir - 4;
+            }
+        } else if ((shift && (key == "ArrowRight")) || (shift && (key == "KeyD"))) {
+            this.dir--;
+            if (this.dir < 0) {
+                this.dir = this.dir + 4;
+            }
+        }
 
         if (this.validate_move(this.x + action.x, this.y + action.y)) {
             this.x += action.x;
@@ -135,7 +135,8 @@ class Tank {
         let first_baricade = {}
         const hits = [];
 
-        let map_cp = rooms.get(map_id_room.get(this.session_id)).game_map;
+        let room = rooms.get(map_id_room.get(this.session_id));
+        let map_cp = room.game_map;
 
         //TODO: Změň směr střely podle natočení tanku
 
@@ -157,7 +158,9 @@ class Tank {
         }
         return { path: [first_baricade, { x: this.x, y: this.y }], hits: hits };
     }
+
 }
+
 
 const io = new Server(3000, { cors: { origin: '*' } });
 
