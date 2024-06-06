@@ -151,7 +151,7 @@ class Tank {
             //TODO: Zachyť kolizi střely s barikádou
 
             //TODO: Najdi zasáhnuté tanky a zavolej na nich metodu hit()
-            if (Tank.x = this.y + i * dir_coef.y){
+            if (Tank.x = this.x + i * dir_coef.y & Tank.color != this.color){
                 console.log ("ligma");
             };
         }
