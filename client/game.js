@@ -81,8 +81,12 @@ class Game {
     //TODO: Vytvoř metodu pro rotaci tanku
 
     draw_tank(tank) {
-        scene.translate(300, 300);
-        scene.rotate(this.tank_directions[tank.dir]);
+        const rotator = (reverse) => {
+            scene.translate(tank.x * 50 + 25, tank.y * 50 + 25);
+            scene.rotate((reverse ? -1 : 1) * this.tank_directions[tank.dir]);
+            scene.translate(-(tank.x * 50 + 25), -(tank.y * 50 + 25));
+        }
+        rotator(false);
         scene.drawImage(
             eval("tank_texture_" + tank.color),
             // tankR_texture,
@@ -91,9 +95,7 @@ class Game {
             45,
             45
         );
-        scene.rotate(-this.tank_directions[tank.dir]);
-        scene.translate(-300, -300);
-        
+        rotator(true);
     }
 
     draw_shot(shot) {
