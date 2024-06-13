@@ -109,18 +109,19 @@ class Tank {
 
     move(key, shift) {
         const action = map_key_value.get(key);
-        console.log(shift, this.dir);
         //TODO: Pokud je stisknuta klávesa "shift", tak tank mění pouze směr
         if ((shift && (key == "ArrowLeft")) || (shift && (key == "KeyA"))) {
             this.dir++;
             if (this.dir > 3) {
                 this.dir = this.dir - 4;
             }
+            return [{ property: "x", value: this.x }, { property: "y", value: this.y }, { property: "dir", value: this.dir }];
         } else if ((shift && (key == "ArrowRight")) || (shift && (key == "KeyD"))) {
             this.dir--;
             if (this.dir < 0) {
                 this.dir = this.dir + 4;
             }
+            return [{ property: "x", value: this.x }, { property: "y", value: this.y }, { property: "dir", value: this.dir }];
         }
 
         if (this.validate_move(this.x + action.x, this.y + action.y) && !shift) {
@@ -129,7 +130,7 @@ class Tank {
 
             //TODO: Automatická změna směru, dle pohybu. Nezapomeň tuto informaci zahrnout v return statementu!
 
-            return [{ property: "x", value: this.x }, { property: "y", value: this.y }];
+            return [{ property: "x", value: this.x }, { property: "y", value: this.y }, { property: "dir", value: this.dir }];
         }
         return false;
     }
@@ -262,7 +263,6 @@ io.on("connection", (socket) => {
         const tank = room.tanks.get(socket.id);
 
         const update_msg = tank.move(msg.key, msg.shift);
-
         if (update_msg) {
             io.to(room.room_name).emit("move_updated", { id: socket.id, update: update_msg });
         }
